@@ -5,8 +5,10 @@ public class StateManager {
 	static State curr;
 	static MapExplore mapExplore;
 	static Battle battle;
+	static MainMenu mainmenu;
 	
 	public enum Screen {
+		MAINMENU,
 		MAPEXPLORE,
 		BATTLE
 	}
@@ -14,7 +16,8 @@ public class StateManager {
 	public StateManager() {
 		mapExplore = new MapExplore();
 		battle = new Battle();
-		curr = mapExplore;
+		mainmenu = new MainMenu();
+		curr = mainmenu;
 		curr.show();
 	}
 	
@@ -23,6 +26,7 @@ public class StateManager {
 		switch(scrn) {
 			case MAPEXPLORE: curr = mapExplore; break;
 			case BATTLE: curr = battle; break;
+			case MAINMENU: curr = mainmenu; break;
 		}
 		curr.show();
 	}

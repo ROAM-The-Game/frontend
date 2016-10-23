@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class BattleActions {
 	
-	static TextureRegionDrawable background = new TextureRegionDrawable(new TextureRegion(new Texture("gui/squarebutton.png")));
+	public static TextureRegionDrawable background = new TextureRegionDrawable(new TextureRegion(new Texture("gui/squarebutton.png")));
 	
 	public static ArrayList<ImageButton> getTechnician() {
 		ArrayList<ImageButton> buttons = new ArrayList<ImageButton>(); 
