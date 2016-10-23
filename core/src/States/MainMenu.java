@@ -48,7 +48,7 @@ public class MainMenu extends State {
 		login.addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if(Game.initPosSet)
+				//if(Game.initPosSet)
 					StateManager.change(Screen.MAPEXPLORE);
 				return true;
 			}

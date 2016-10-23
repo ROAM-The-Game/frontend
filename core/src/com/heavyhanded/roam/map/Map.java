@@ -20,7 +20,7 @@ public class Map extends Actor {
 	String key = "AIzaSyCssDPParnc2DGjOOXvXIPMjeveSe31Vns";
 	String base = "https://maps.googleapis.com/maps/api/staticmap?";
 	ArrayList<MapTile> tiles;
-	static float tileSize;
+	public static float tileSize;
 	public Map() {
 		float screenSize = Math.max(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tileSize = screenSize;
@@ -38,6 +38,8 @@ public class Map extends Actor {
 		for(MapTile tile : tiles) {
 			if(tile.texture != null)
 				batch.draw(tile.texture, tile.centerX-tile.width/2, tile.centerY-tile.height/2, tile.width, tile.height);
+			//if(tile.texture != null)
+				//System.out.println(tile.texture.getWidth());
 		}
 		//System.out.println(tiles.get(0));
 	}

@@ -41,4 +41,8 @@ public class Entity extends Actor {
 		return speed;
 	}
 
+	public Texture getTexture() {
+		return texture;
+	}
+
 }

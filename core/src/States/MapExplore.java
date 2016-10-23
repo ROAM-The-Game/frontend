@@ -65,7 +65,12 @@ public class MapExplore extends State {
 	}
 
 	private void updateMap() {
-
+		if(!mapInit) {
+			if(Game.initPosSet) {
+				map.init();
+				mapInit = true;
+			}
+		}
 	}
 
 	@Override
