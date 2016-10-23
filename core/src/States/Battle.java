@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton.ImageTextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.heavyhanded.roam.GUI.Timer;
 import com.heavyhanded.roam.Game;
 import com.heavyhanded.roam.GUI.BattleActions;
 
@@ -27,6 +28,7 @@ public class Battle extends State {
 	ImageTextButton attack;
 	ImageTextButton inventory;
 	ImageTextButton goBack;
+	public static Timer timer = new Timer();
 	
 	Image bg;
 	
@@ -36,9 +38,11 @@ public class Battle extends State {
 		ITEMS
 	}
 	
-	GameAction action;
+	public static GameAction action;
 	
 	ArrayList<ImageButton> attakcBtns;
+
+	public static boolean playerTurn;
 	
 	public Battle() {
 		stage = new Stage();
@@ -67,6 +71,8 @@ public class Battle extends State {
 		bg = new Image(new Texture("gui/battlebg.png"));
 		bg.setWidth(Gdx.graphics.getWidth());
 		bg.setHeight(Gdx.graphics.getHeight());
+
+		playerTurn = true;
 
 	}
 	
@@ -123,6 +129,8 @@ public class Battle extends State {
 
 		enemy.setWidth(enemy.getWidth()*3);
 		enemy.setHeight(enemy.getHeight()*3);
+
+		stage.addActor(timer);
 		
 		Gdx.input.setInputProcessor(stage);
 
@@ -131,6 +139,10 @@ public class Battle extends State {
 	@Override
 	public void render(float delta) {
 		gui();
+		if(timer.time <= 0) {
+			//System.out.println("!!!!!!!");
+			enemy.attack();
+		}
 		stage.act(delta);
 		stage.draw();
 	}

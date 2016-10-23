@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.heavyhanded.roam.map.Map;
+import com.heavyhanded.roam.networking.Online;
 
 import Entities.Player;
 import States.StateManager;
@@ -24,6 +25,7 @@ public class Game extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		img = new Texture("player/Fallout_Survivor.png");
 		stateMgr = new StateManager();
+		Online.hackConnect();
 	}
 
 	@Override

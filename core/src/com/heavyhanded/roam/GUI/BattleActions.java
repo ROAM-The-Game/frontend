@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.heavyhanded.roam.Game;
 
+import States.Battle;
 import States.StateManager;
 
 public class BattleActions {
@@ -32,6 +33,37 @@ public class BattleActions {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				//lower enemy health
+				Battle.timer.time -= 2;
+				//StateManager.change(StateManager.Screen.MAPEXPLORE);
+				//Game.player.setWidth(64);
+				//Game.player.setHeight(64);
+				return true;
+			}
+		});
+		
+		style.imageUp      = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
+		style.imageDown    = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
+		button = new ImageButton(style);
+		buttons.add(button);
+		button.addListener(new ClickListener(){
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				//lower enemy health
+				//StateManager.change(StateManager.Screen.MAPEXPLORE);
+				//Game.player.setWidth(64);
+				//Game.player.setHeight(64);
+				return true;
+			}
+		});
+		
+		style.imageUp      = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
+		style.imageDown    = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
+		button = new ImageButton(style);
+		buttons.add(button);
+		button.addListener(new ClickListener(){
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				//lower enemy health
 				StateManager.change(StateManager.Screen.MAPEXPLORE);
 				Game.player.setWidth(64);
 				Game.player.setHeight(64);
@@ -43,17 +75,19 @@ public class BattleActions {
 		style.imageDown    = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
 		button = new ImageButton(style);
 		buttons.add(button);
-		
-		style.imageUp      = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
-		style.imageDown    = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
-		button = new ImageButton(style);
-		buttons.add(button);
-		
-		style.imageUp      = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
-		style.imageDown    = new TextureRegionDrawable(new TextureRegion(new Texture("gui/emp.png")));
-		button = new ImageButton(style);
-		buttons.add(button);
+		button.addListener(new ClickListener(){
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				//lower enemy health
+				StateManager.change(StateManager.Screen.MAPEXPLORE);
+				Game.player.setWidth(64);
+				Game.player.setHeight(64);
+				return true;
+			}
+		});
+
 		return buttons;
+
 	}
 
 }
