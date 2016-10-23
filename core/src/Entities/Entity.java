@@ -33,6 +33,7 @@ public class Entity extends Actor {
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
+		setBounds(getX(), getY(), texture.getWidth(), texture.getHeight());
 		batch.draw(texture, getX(), getY());
 	}
 	

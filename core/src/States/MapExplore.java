@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.heavyhanded.roam.Game;
 
 import Entities.Player;
 import Entities.Enemy.Enemy;
+import States.StateManager.Screen;
 
 public class MapExplore extends State {
 	
@@ -25,9 +28,18 @@ public class MapExplore extends State {
 	@Override
 	public void show() {
 		stage.addActor(player);
-		for(Enemy enemy: enemies) {
-			
+		for(final Enemy enemy: enemies) {
+			stage.addActor(enemy);
+			enemy.addListener(new ClickListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					Battle.enemy = enemy;
+					StateManager.change(Screen.BATTLE);
+					return true;
+				}
+			});
 		}
+		Gdx.input.setInputProcessor(stage);
 	}
 	
 	@Override
