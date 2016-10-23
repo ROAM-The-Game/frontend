@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.heavyhanded.roam.Game;
 
+import Entities.Player;
 import States.Battle;
 import States.StateManager;
 
@@ -34,6 +35,7 @@ public class BattleActions {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				//lower enemy health
 				Battle.timer.time -= 2;
+				Player.fireProjectile();
 				//StateManager.change(StateManager.Screen.MAPEXPLORE);
 				//Game.player.setWidth(64);
 				//Game.player.setHeight(64);

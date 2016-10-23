@@ -131,7 +131,7 @@ public class Online {
 									public void run () {
 										String jsonString = new String(data);
 										JsonValue val = reader.parse(jsonString);
-										System.out.println(val.get("form"));
+										//System.out.println(val.get("form"));
 										//System.out.println("The data: " + jsonString);
 									}
 								});
@@ -139,7 +139,7 @@ public class Online {
 
 							@Override
 							public void failed(Throwable t) {
-								System.out.println(t.getMessage());
+								//System.out.println(t.getMessage());
 							}
 
 							public void handleHttpResponse1(Net.HttpResponse httpResponse) {

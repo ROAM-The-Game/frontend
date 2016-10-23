@@ -6,17 +6,20 @@ public class StateManager {
 	static MapExplore mapExplore;
 	static Battle battle;
 	static MainMenu mainmenu;
+	static Death death;
 	
 	public enum Screen {
 		MAINMENU,
 		MAPEXPLORE,
-		BATTLE
+		BATTLE,
+		DEATH
 	}
 	
 	public StateManager() {
 		mapExplore = new MapExplore();
 		battle = new Battle();
 		mainmenu = new MainMenu();
+		death = new Death();
 		curr = mainmenu;
 		curr.show();
 	}

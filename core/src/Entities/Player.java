@@ -4,11 +4,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.heavyhanded.roam.Game;
+
+import java.util.ArrayList;
 
 public class Player extends Entity {
 	
 	public Class playerClass;
-	
+
+	static ArrayList<Projectile> projs;
 	public Player() {
 		playerClass = Class.Technician;
 		texture = new Texture("player/Fallout_Survivor.png");
@@ -21,6 +25,7 @@ public class Player extends Entity {
 		pix.dispose();
 		setWidth(texture.getWidth());
 		setHeight(texture.getHeight());
+		projs = new ArrayList<Projectile>();
 	}
 	
 	public Player(Class pclass) {
@@ -36,7 +41,9 @@ public class Player extends Entity {
 	
 	@Override
 	public void act(float delta) {
-		
+		for(Projectile proj : projs) {
+			proj.act(delta);
+		}
 	}
 	
 	@Override
@@ -46,6 +53,13 @@ public class Player extends Entity {
 		//}
 		batch.draw(texture, getX(), getY(), getWidth(), getHeight());
 		batch.draw(healthBar, getX() + getWidth()/2, getY() + getHeight() + 10, (health/maxHealth)*100, 10);
+		for(Projectile proj : projs) {
+			batch.draw(proj.frames.get(proj.curr), proj.getX(), proj.getY());
+		}
+	}
+
+	public static void fireProjectile() {
+		projs.add(new Projectile(null, Game.player.getX(), Game.player.getY(), 15, 65));
 	}
 
 }

@@ -61,7 +61,7 @@ public class Enemy extends Entity {
 						setY(getY() + 5);
 						currFrame = 6;
 					} else if (time < 0.4) {
-						setX(getX() + 150);
+						setX(getX() + 159);
 						setY(getY() + 10);
 						currFrame = 7;
 					} else if (time < 0.5) {
@@ -72,8 +72,8 @@ public class Enemy extends Entity {
 						Battle.timer.setVisible(true);
 						Battle.playerTurn = true;
 					}
-					if(getX() >= Gdx.graphics.getWidth() ) {
-						setX(Gdx.graphics.getWidth());
+					if(getX() >= Gdx.graphics.getWidth()  - getWidth()) {
+						setX(Gdx.graphics.getWidth() - getWidth());
 					}
 					time += delta;
 					break;

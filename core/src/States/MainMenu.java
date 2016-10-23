@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.heavyhanded.roam.GUI.BattleActions;
 import com.heavyhanded.roam.Game;
+import com.heavyhanded.roam.networking.Online;
 
 import States.StateManager.Screen;
 
@@ -49,7 +50,8 @@ public class MainMenu extends State {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				//if(Game.initPosSet)
-					StateManager.change(Screen.MAPEXPLORE);
+					//StateManager.change(Screen.MAPEXPLORE);
+				Online.authUser(username.getText(), password.getText());
 				return true;
 			}
 		});
