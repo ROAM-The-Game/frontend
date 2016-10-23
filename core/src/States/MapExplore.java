@@ -20,6 +20,7 @@ public class MapExplore extends State {
 	//Enemy test;
 	ArrayList<Enemy> enemies;
 	Map map;
+	boolean mapInit = false;
 	public MapExplore() {
 		stage = new Stage();
 		player = Game.player;
@@ -56,11 +57,20 @@ public class MapExplore extends State {
 			player.setY(player.getY() - player.getSpeed());
 		if(Gdx.input.isKeyPressed(Input.Keys.D))
 			player.setX(player.getX() + player.getSpeed());
-		
+		updateMap();
 		stage.getCamera().position.x = player.getX();
 		stage.getCamera().position.y = player.getY();
 		stage.act(delta);
 		stage.draw();
+	}
+
+	private void updateMap() {
+
+	}
+
+	@Override
+	public void hide() {
+		stage.dispose();
 	}
 	
 

@@ -8,13 +8,13 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton.ImageTextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.heavyhanded.roam.GUI.BattleActions;
+import com.heavyhanded.roam.Game;
 
 import States.StateManager.Screen;
 
@@ -48,7 +48,8 @@ public class MainMenu extends State {
 		login.addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				StateManager.change(Screen.MAPEXPLORE);
+				if(Game.initPosSet)
+					StateManager.change(Screen.MAPEXPLORE);
 				return true;
 			}
 		});
@@ -60,14 +61,20 @@ public class MainMenu extends State {
 	public void show() {
 		stage.addActor(bg);
 		stage.addActor(username);
+		username.setWidth(Gdx.graphics.getWidth()*0.2f);
+		username.setHeight(Gdx.graphics.getHeight()*0.1f);
 		username.setX(Gdx.graphics.getWidth()/2-username.getWidth()/2);
-		username.setY(Gdx.graphics.getHeight()*0.3f);
+		username.setY(Gdx.graphics.getHeight()*0.4f);
 		
 		stage.addActor(password);
+		password.setWidth(Gdx.graphics.getWidth()*0.2f);
+		password.setHeight(Gdx.graphics.getHeight()*0.1f);
 		password.setX(Gdx.graphics.getWidth()/2-password.getWidth()/2);
 		password.setY(Gdx.graphics.getHeight()*0.2f);
 		
 		stage.addActor(login);
+		login.setWidth(Gdx.graphics.getWidth()*0.15f);
+		login.setHeight(Gdx.graphics.getHeight()*0.1f);
 		login.setX(Gdx.graphics.getWidth()/2-login.getWidth()/2);
 		login.setY(Gdx.graphics.getHeight()*0.0f);
 		Gdx.input.setInputProcessor(stage);

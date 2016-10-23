@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton.ImageTextButtonStyle;
@@ -18,7 +19,6 @@ import com.heavyhanded.roam.GUI.BattleActions;
 
 import Entities.Player;
 import Entities.Enemy.Enemy;
-import States.StateManager.Screen;
 
 public class Battle extends State {
 	
@@ -27,6 +27,8 @@ public class Battle extends State {
 	ImageTextButton attack;
 	ImageTextButton inventory;
 	ImageTextButton goBack;
+	
+	Image bg;
 	
 	enum GameAction {
 		CHOOSE,
@@ -59,17 +61,22 @@ public class Battle extends State {
 				return true;
 			}
 		});
+		
+		bg = new Image(new Texture("gui/battlebg.png"));
+		bg.setWidth(Gdx.graphics.getWidth());
+		bg.setHeight(Gdx.graphics.getHeight());
 	}
 	
 	@Override
 	public void show() {
+		stage.addActor(bg);
 		stage.addActor(player);
-		player.setX(Gdx.graphics.getWidth()*0.1f);
-		player.setY(Gdx.graphics.getHeight()/2);
+		player.setX(Gdx.graphics.getWidth()*0.15f);
+		player.setY(Gdx.graphics.getHeight()*0.27f);
 		
 		stage.addActor(enemy);
 		enemy.setX(Gdx.graphics.getWidth()*0.9f - enemy.getWidth());
-		enemy.setY(Gdx.graphics.getHeight()/2);
+		enemy.setY(Gdx.graphics.getHeight()*0.44f);
 		
 		stage.addActor(attack);
 		attack.setX(Gdx.graphics.getWidth()*0.1f);

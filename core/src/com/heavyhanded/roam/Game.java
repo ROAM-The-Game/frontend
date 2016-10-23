@@ -16,6 +16,8 @@ public class Game extends ApplicationAdapter {
 	Map map;
 	public static Player player;
 	StateManager stateMgr;
+	public static float lat, lon;
+	public static boolean initPosSet = false;
 	@Override
 	public void create () {
 		player = new Player();

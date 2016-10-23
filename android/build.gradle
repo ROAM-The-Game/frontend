@@ -124,3 +124,10 @@ idea {
         }
     }
 }
+
+dependencies {
+    // Google Play Services
+    //compile 'com.google.android.gms:play-services:+'
+    // Support Library
+    //compile 'com.android.support:appcompat-v7:+'
+}

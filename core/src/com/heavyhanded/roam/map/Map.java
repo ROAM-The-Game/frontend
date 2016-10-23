@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.heavyhanded.roam.Game;
 
 public class Map extends Actor {
 	
@@ -19,9 +20,16 @@ public class Map extends Actor {
 	String key = "AIzaSyCssDPParnc2DGjOOXvXIPMjeveSe31Vns";
 	String base = "https://maps.googleapis.com/maps/api/staticmap?";
 	ArrayList<MapTile> tiles;
+	static float tileSize;
 	public Map() {
+		float screenSize = Math.max(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tileSize = screenSize;
+
 		tiles = new ArrayList<MapTile>();
-		MapTile tile = new MapTile(25.7785716f, -80.189455f, 0, 0);
+	}
+
+	public void init() {
+		MapTile tile = new MapTile(Game.lat, Game.lon, 0, 0); // 25.7785716f, -80.189455f
 		tiles.add(tile);
 	}
 	
@@ -31,6 +39,7 @@ public class Map extends Actor {
 			if(tile.texture != null)
 				batch.draw(tile.texture, tile.centerX-tile.width/2, tile.centerY-tile.height/2, tile.width, tile.height);
 		}
+		//System.out.println(tiles.get(0));
 	}
 
 }

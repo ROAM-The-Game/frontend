@@ -11,14 +11,13 @@ import com.badlogic.gdx.graphics.Texture;
 public class MapTile {
 	
 	float centerX, centerY, width, height;
-	
 	Texture texture;
 	String key = "AIzaSyCssDPParnc2DGjOOXvXIPMjeveSe31Vns";
 	String base = "https://maps.googleapis.com/maps/api/staticmap?";
 	public MapTile(float lat, float lon, float cx, float cy) {
 		centerX = cx;
 		centerY = cy;
-		width = height = 1000;
+		width = height = Map.tileSize;
 		HttpRequest httpRequest = new HttpRequest(Net.HttpMethods.GET);
 		httpRequest.setUrl(base + "key=" + key + "&center=" + lat + "," + lon
 		+ "&size=" + "640x640" + "&zoom=18");
