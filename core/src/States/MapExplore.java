@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -45,6 +46,7 @@ public class MapExplore extends State {
 			});
 		}
 		Gdx.input.setInputProcessor(stage);
+		((OrthographicCamera) stage.getCamera()).zoom = 0.5f;
 	}
 	
 	@Override

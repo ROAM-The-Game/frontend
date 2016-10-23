@@ -16,6 +16,8 @@ public class Enemy extends Entity {
 		switch(type) {
 			case Test: texture = new Texture("enemy/B_001.png"); break;
 		}
+		setUp();
+
 	}
 	
 

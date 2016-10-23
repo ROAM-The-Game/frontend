@@ -19,6 +19,8 @@ public class Player extends Entity {
 		pix.drawPixel(0, 0, Color.argb8888(0, 0, 255, 1));
 		healthBar = new Texture(pix);
 		pix.dispose();
+		setWidth(texture.getWidth());
+		setHeight(texture.getHeight());
 	}
 	
 	public Player(Class pclass) {
@@ -42,8 +44,8 @@ public class Player extends Entity {
 		//switch(playerClass) {
 			//case Medic: batch.draw(texture, getX(), getY()); break;
 		//}
-		batch.draw(texture, getX(), getY());
-		batch.draw(healthBar, getX(), getY() + texture.getHeight() + 10, (health/maxHealth)*100, 10);
+		batch.draw(texture, getX(), getY(), getWidth(), getHeight());
+		batch.draw(healthBar, getX() + getWidth()/2, getY() + getHeight() + 10, (health/maxHealth)*100, 10);
 	}
 
 }

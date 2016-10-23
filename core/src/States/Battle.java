@@ -61,10 +61,13 @@ public class Battle extends State {
 				return true;
 			}
 		});
+		goBack.setWidth(Gdx.graphics.getWidth()*0.12f);
+		goBack.setHeight(Gdx.graphics.getHeight()*0.12f);
 		
 		bg = new Image(new Texture("gui/battlebg.png"));
 		bg.setWidth(Gdx.graphics.getWidth());
 		bg.setHeight(Gdx.graphics.getHeight());
+
 	}
 	
 	@Override
@@ -75,12 +78,14 @@ public class Battle extends State {
 		player.setY(Gdx.graphics.getHeight()*0.27f);
 		
 		stage.addActor(enemy);
-		enemy.setX(Gdx.graphics.getWidth()*0.9f - enemy.getWidth());
-		enemy.setY(Gdx.graphics.getHeight()*0.44f);
+		enemy.setX(Gdx.graphics.getWidth()*0.9f - enemy.getWidth()*1.7f);
+		enemy.setY(Gdx.graphics.getHeight()*0.40f);//0.44f
 		
 		stage.addActor(attack);
 		attack.setX(Gdx.graphics.getWidth()*0.1f);
 		attack.setY(Gdx.graphics.getHeight()*0.05f);
+		attack.setWidth(Gdx.graphics.getWidth()*0.12f);
+		attack.setHeight(Gdx.graphics.getHeight()*0.12f);
 		attack.addListener(new ClickListener(){
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -100,6 +105,8 @@ public class Battle extends State {
 		for(ImageButton btn : attakcBtns) {
 			btn.setX(Gdx.graphics.getWidth()*(0.15f*x++) + Gdx.graphics.getWidth()*0.075f);
 			btn.setY(Gdx.graphics.getHeight()*0.05f);
+			btn.setWidth(Gdx.graphics.getWidth()*0.12f);
+			btn.setHeight(Gdx.graphics.getHeight()*0.12f);
 			stage.addActor(btn);
 			btn.setVisible(false);
 		}
@@ -107,6 +114,15 @@ public class Battle extends State {
 		stage.addActor(inventory);
 		inventory.setX(Gdx.graphics.getWidth()*0.3f);
 		inventory.setY(Gdx.graphics.getHeight()*0.05f);
+		inventory.setWidth(Gdx.graphics.getWidth()*0.12f);
+		inventory.setHeight(Gdx.graphics.getHeight()*0.12f);
+
+		float len = Gdx.graphics.getWidth();
+		player.setWidth(player.getWidth()*3);
+		player.setHeight(player.getHeight()*3);
+
+		enemy.setWidth(enemy.getWidth()*3);
+		enemy.setHeight(enemy.getHeight()*3);
 		
 		Gdx.input.setInputProcessor(stage);
 

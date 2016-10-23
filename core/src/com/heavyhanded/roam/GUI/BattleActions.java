@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.heavyhanded.roam.Game;
+
+import States.StateManager;
 
 public class BattleActions {
 	
@@ -29,6 +32,9 @@ public class BattleActions {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				//lower enemy health
+				StateManager.change(StateManager.Screen.MAPEXPLORE);
+				Game.player.setWidth(64);
+				Game.player.setHeight(64);
 				return true;
 			}
 		});

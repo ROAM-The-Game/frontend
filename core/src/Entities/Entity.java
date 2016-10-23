@@ -14,7 +14,17 @@ public class Entity extends Actor {
 	boolean isAlive;
 	
 	public Entity() {
-		
+		if(texture != null) {
+			setWidth(texture.getWidth());
+			setHeight(texture.getHeight());
+		}
+	}
+
+	public void setUp() {
+		if(texture != null) {
+			setWidth(texture.getWidth());
+			setHeight(texture.getHeight());
+		}
 	}
 	
 	public Entity(String texture) {
@@ -28,13 +38,13 @@ public class Entity extends Actor {
 	
 	@Override
 	public void act(float delta) {
-		
+		;
 	}
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		setBounds(getX(), getY(), texture.getWidth(), texture.getHeight());
-		batch.draw(texture, getX(), getY());
+		setBounds(getX(), getY(), getWidth(), getHeight());
+		batch.draw(texture, getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public float getSpeed() {

@@ -1,7 +1,10 @@
 package com.heavyhanded.roam.networking;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.Net.HttpRequest;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.net.Socket;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
@@ -37,6 +40,39 @@ public class Online {
 					try {
 						HttpRequest httpRequest = new HttpRequest(Net.HttpMethods.POST);
 						httpRequest.setUrl(base);
+						Gdx.net.sendHttpRequest(httpRequest, new Net.HttpResponseListener() {
+
+							@Override
+							public void handleHttpResponse(Net.HttpResponse httpResponse) {
+								System.out.println("handle resp");
+								final int statusCode = httpResponse.getStatus().getStatusCode();
+								System.out.println(statusCode);
+								if (statusCode !=200) return;
+
+								final byte[] rawImageBytes = httpResponse.getResult();
+								Gdx.app.postRunnable(new Runnable() {
+									public void run () {
+										Pixmap pixmap = new Pixmap(rawImageBytes, 0, rawImageBytes.length);
+									}
+								});
+							}
+
+							@Override
+							public void failed(Throwable t) {
+								System.out.println(t.getMessage());
+							}
+
+							public void handleHttpResponse1(Net.HttpResponse httpResponse) {
+								// TODO Auto-generated method stub
+
+							}
+
+							@Override
+							public void cancelled() {
+								// TODO Auto-generated method stub
+
+							}
+						});
 						Thread.sleep(16);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
