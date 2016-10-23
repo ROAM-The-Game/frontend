@@ -21,7 +21,7 @@ public class Game extends ApplicationAdapter {
 		player = new Player();
 		batch = new SpriteBatch();
 		img = new Texture("player/Fallout_Survivor.png");
-		map = new Map();
+		//map = new Map();
 		stateMgr = new StateManager();
 	}
 
@@ -30,7 +30,7 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		map.render(batch);
+		//map.render(batch);
 		stateMgr.render(Gdx.graphics.getDeltaTime());
 		batch.end();
 	}

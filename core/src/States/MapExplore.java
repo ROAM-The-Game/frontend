@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.heavyhanded.roam.Game;
+import com.heavyhanded.roam.map.Map;
 
 import Entities.Player;
 import Entities.Enemy.Enemy;
@@ -18,14 +19,18 @@ public class MapExplore extends State {
 	Player player;
 	//Enemy test;
 	ArrayList<Enemy> enemies;
+	Map map;
 	public MapExplore() {
 		stage = new Stage();
 		player = Game.player;
 		enemies = new ArrayList<Enemy>();
 		enemies.add(new Enemy(Enemy.Type.Test));
+		map = new Map();
 	}
+	
 	@Override
 	public void show() {
+		stage.addActor(map);
 		stage.addActor(player);
 		for(final Enemy enemy: enemies) {
 			stage.addActor(enemy);
