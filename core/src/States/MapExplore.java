@@ -23,7 +23,6 @@ public class MapExplore extends State {
 		player = Game.player;
 		enemies = new ArrayList<Enemy>();
 		enemies.add(new Enemy(Enemy.Type.Test));
-		//test = new Enemy(Enemy.Type.Test);
 	}
 	@Override
 	public void show() {

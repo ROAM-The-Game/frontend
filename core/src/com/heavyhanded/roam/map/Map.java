@@ -22,7 +22,9 @@ public class Map {
              
              @Override
              public void handleHttpResponse(HttpResponse httpResponse) {
+            	System.out.println("handle resp");
                 final int statusCode = httpResponse.getStatus().getStatusCode();
+                
                 if (statusCode !=200) return;
                 
                 final byte[] rawImageBytes = httpResponse.getResult();

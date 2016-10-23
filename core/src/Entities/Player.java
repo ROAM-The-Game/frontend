@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class Player extends Entity {
 	
-	Class playerClass;
+	public Class playerClass;
 	
 	public Player() {
 		playerClass = Class.Technician;
