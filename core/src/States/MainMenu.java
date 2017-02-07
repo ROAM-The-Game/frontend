@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -41,7 +42,10 @@ public class MainMenu extends State {
 		password = new TextField("", style);
 		
 		ImageTextButtonStyle loginStyle = new ImageTextButtonStyle();
-		loginStyle.font =  new BitmapFont();
+		BitmapFont font = new BitmapFont();
+		font.getData().scale(5);
+		//FreeTypeFontGenerator generator = new FreeTypeFontGenerator();
+		loginStyle.font =  font;
 		loginStyle.down = BattleActions.background;
 		loginStyle.up = BattleActions.background;
 		
@@ -50,8 +54,8 @@ public class MainMenu extends State {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				//if(Game.initPosSet)
-					//StateManager.change(Screen.MAPEXPLORE);
-				Online.authUser(username.getText(), password.getText());
+					StateManager.change(Screen.MAPEXPLORE);
+				//Online.authUser(username.getText(), password.getText());
 				return true;
 			}
 		});

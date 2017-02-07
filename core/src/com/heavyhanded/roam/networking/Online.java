@@ -10,6 +10,7 @@ import com.badlogic.gdx.net.Socket;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.JsonWriter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,16 +20,24 @@ import Entities.Player;
 public class Online {
 	
 	static boolean connectionAlive;
-	static String base = "http://httpbin.org/post";
+	static String base = "http://d3ee80dd.ngrok.io";
 	static String JWT;
 	static JsonReader reader = new JsonReader();
 	public static void authUser(String username, String password) {
+		System.out.println("try login" + username);
 		HttpRequest httpRequest = new HttpRequest(Net.HttpMethods.POST);
+		httpRequest.setHeader("Content-Type", "application/json");
+		//httpRequest.setHeader("Accept", "application/json");
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put("username", username);
 		parameters.put("password", password);
 		httpRequest.setUrl(base + "/login");
-		httpRequest.setContent(HttpParametersUtils.convertHttpParameters(parameters));
+		final Json json = new Json();
+		final String user = username, pass = password;
+		String requestJson = json.toJson(new Object(){public String username = user, password=pass; });
+		System.out.println("test json" + json.prettyPrint(new Object(){public String username = user, password=pass; }));
+		//httpRequest.setContent("{" + "username"+"}");
+		//httpRequest.setContent(HttpParametersUtils.convertHttpParameters(parameters));
 		Gdx.net.sendHttpRequest(httpRequest, new Net.HttpResponseListener() {
 
 			@Override
@@ -153,7 +162,7 @@ public class Online {
 
 							}
 						});
-						Thread.sleep(1000);//16
+						Thread.sleep(2000);//16
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

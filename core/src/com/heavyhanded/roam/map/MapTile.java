@@ -19,8 +19,12 @@ public class MapTile {
 		centerY = cy;
 		width = height = Map.tileSize;
 		HttpRequest httpRequest = new HttpRequest(Net.HttpMethods.GET);
+		//httpRequest.setUrl(base + "key=" + key + "&center=" + lat + "," + lon
+		//+ "&size=" + "640x640" + "&zoom=18");
+
 		httpRequest.setUrl(base + "key=" + key + "&center=" + lat + "," + lon
-		+ "&size=" + "640x640" + "&zoom=18");
+				+ "&zoom=16&size=640x640&maptype=terrain&style=feature:landscape.man_made|color:0x222211&style=feature:all|element:labels|visibility:off&style=feature:road|color:0x654321&style=feature:poi.business|color:0x186842&style=feature:poi.attraction|color:0xff0000&style=feature:poi.government|color:0x00ff00&style=feature:poi.medical|color:0x0000ff&style=feature:poi.park|color:0x000000&style=feature:poi.place_of_worship|color:0x631355&style=feature:poi.school|color:0x584788&style=feature:poi.sports_complex|color:0x797923");
+
 		 Gdx.net.sendHttpRequest(httpRequest, new HttpResponseListener() {
              
              @Override

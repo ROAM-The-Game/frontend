@@ -25,7 +25,7 @@ public class Game extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		img = new Texture("player/Fallout_Survivor.png");
 		stateMgr = new StateManager();
-		Online.hackConnect();
+		//Online.hackConnect();
 	}
 
 	@Override

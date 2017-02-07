@@ -45,6 +45,19 @@ public class MapExplore extends State {
 				}
 			});
 		}
+		for(int i = 0; i < 10; i++) {
+			final Enemy enemy = new Enemy(Enemy.Type.Test);
+			enemy.addListener(new ClickListener() {
+				@Override
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+					Battle.enemy = enemy;
+					StateManager.change(Screen.BATTLE);
+					return true;
+				}
+			});
+			enemy.setPosition((float)Math.random()*1200 - 600, (float)Math.random()*1200 - 600);
+			stage.addActor(enemy);
+		}
 		Gdx.input.setInputProcessor(stage);
 		((OrthographicCamera) stage.getCamera()).zoom = 0.5f;
 	}

@@ -21,7 +21,7 @@ public class Map extends Actor {
 	String base = "https://maps.googleapis.com/maps/api/staticmap?";
 	ArrayList<MapTile> tiles;
 	Texture loading = new Texture("gui/loginbg.png");
-	public static float tileSize;
+	public static float tileSize;//25.7785057, -80.1894681
 	public Map() {
 		float screenSize = Math.max(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tileSize = screenSize;
@@ -30,8 +30,8 @@ public class Map extends Actor {
 	}
 
 	public void init() {
-		System.out.println("Make first map");
-		MapTile tile = new MapTile(Game.lat, Game.lon, 0, 0); // 25.7785716f, -80.189455f
+		//System.out.println("Make first map");
+		MapTile tile = new MapTile(25.7785057f, -80.1894681f, 0, 0); // 25.7785716f, -80.189455f
 		tiles.add(tile);
 	}
 	

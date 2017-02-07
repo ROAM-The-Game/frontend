@@ -54,7 +54,7 @@ public class Enemy extends Entity {
 						currFrame = 4;
 					} else if (time < 0.2) {
 						setX(getX() - 80);
-						setY(getY() - 6);
+						setY(getY() - 5);
 						currFrame = 5;
 					} else if (time < 0.3) {
 						setX(getX() + 80);
@@ -74,6 +74,20 @@ public class Enemy extends Entity {
 					}
 					if(getX() >= Gdx.graphics.getWidth()  - getWidth()) {
 						setX(Gdx.graphics.getWidth() - getWidth());
+					}
+					time += delta;
+					break;
+			}
+		} else {
+			switch(type) {
+				case Test:
+					if(time < 0.2){
+						currFrame = 0;
+					} else if(time < 0.4) {
+						currFrame = 1;
+					} else if(time < 0.6) {
+						currFrame = 1;
+						time = 0;
 					}
 					time += delta;
 					break;
